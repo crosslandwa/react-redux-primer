@@ -4,7 +4,9 @@
 One (of many) getting started guides for React/Redux
 
 **Why?**
-On a recent work project I started my team down the path of adopting these tools in production. This tutorial is a resource to get those in my team (and in collaborating teams) up to a shared useful base level of understanding of these tools, so we can collaborate and learn together. It assumes *almost zero* prior exposure to React/Redux (and *nearly zero* exposure to client side JS development)
+On a recent work project I started my team down the path of adopting these tools in production. This tutorial is a resource to get those in my team (and in collaborating teams) up to a shared useful base level of understanding of these tools, so we can collaborate and learn together.
+
+It assumes *almost zero* prior exposure to React/Redux (and *nearly zero* exposure to client side JS development) but does assume a degree of programming familiarity, i.e. you should show no fear of `functions`, `types`, `classes`, `objects` etc.
 
 It *does not* aim to be an exhaustive documentation resource for those tools (I'll link out to better docs where appropriate), nor does it promise to offer **the best way** to solve the problems/areas covered...
 
@@ -25,25 +27,13 @@ npm install
 ```
 then open the {REPO_NAME} folder in your IDE
 
-Cover here how to use this resource.
+Work through the technologies in the links below (note they build on each other so follow them in order) - each section links through to another directory/README in this repo with further steps/resources
 
-ideas
-- start dev server with env variable that changes the entry point. Different entry point per step (means tutorial includes working code)
-- only minimal working code, get to final step together (how would you use this resource solo?)
-- branch(es) with answers, use compare/x...y to see the incremental changes
-
-**The play along steps throughout this tutorial assume have been written with the assumption you're using OS X**
+**The play along steps throughout this tutorial have been written with the assumption you're using OS X**
 
 ## What is covered
 
-### Webpack
- - JS script in page (drawing some DOM, maybe with a setTimeout)
- - Why do we split scripts? Why require not multiple <script> tags?
- - No require in the browser
- - Webpack is a bundler, myApp.js -> bundle.js
-
-### Webpack dev server
- - hot reloading
+- [webpack/webpack dev server]('./webpack')
 
 ### React (not sure about order yet, just capturing the ideas to cover)
  - introduce unidirectional data flow (onclick invokes event handler, calls setState, triggers a re-render)
@@ -74,3 +64,8 @@ ideas
 ### Re-select
  - create anther type of tile, observe how parsing state is duplicated. Refactor to use re-select
  - show diffs from drum machine to how this is critical in more complex app
+
+ideas
+- start dev server with env variable that changes the entry point. Different entry point per step (means tutorial includes working code)
+- only minimal working code, get to final step together (how would you use this resource solo?)
+- branches with answers, use compare/x...y to see the incremental changes

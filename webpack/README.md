@@ -44,7 +44,7 @@ Webpack dev server is an add on for webpack that adds some real nice tooling to 
 Let's fire it up
 - ```../node_modules/webpack-dev-server/bin/webpack-dev-server.js  --entry ./indexB.js --output-filename bundle.js```
 - open the output URL in your browser
-- make some edits to indexB.js or halloweltB.js and see them take effect in your browser without even reloading the page!
+- make some edits to indexB.js or halloweltB.js - see them take effect in your browser without even reloading the page!
 
 ## Summary
 
