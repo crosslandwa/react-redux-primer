@@ -9,7 +9,7 @@ Why do we need it...
 Here our app across multiple HTML/Javascript files (where the JS is loaded via <script> tags)
 
 - Open webpack/indexA.html in your browser
-- Reduce the timeout time in indexA.js and break the app
+- Reduce the timeout time in webpack/indexA.js and break the app
 
 Note how this implementation introduces the following [connasences](https://en.wikipedia.org/wiki/Connascence_(computer_programming))
 - Connascence of name (global function names)
