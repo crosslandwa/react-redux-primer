@@ -17,7 +17,14 @@ Note how this implementation introduces the following [connasences](https://en.w
 
 ## Step 2 - Declaring dependencies...
 
+- Run nodeIndexB.js in node with: ```node nodeIndexB.js```
+
+Everything is cool! nodeIndexB.js has explicitly brought in it's dependencies through use of node's `require` function
+
 ## Step 3 - ...and making them work in the browser...
+
+- Open indexB.html in the browser
+- Be sad because `require` doesn't work...
 
 ## Step 4 - ...with a rocket powered development cycle
 
