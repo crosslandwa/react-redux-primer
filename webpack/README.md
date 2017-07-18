@@ -21,6 +21,8 @@ Note how this implementation introduces the following [connasences](https://en.w
 
 Everything is cool! nodeIndexB.js has explicitly brought in it's dependencies through use of node's `require` function
 
+*Note that `require` is [one of many ways](https://stackoverflow.com/questions/16521471/relation-between-commonjs-amd-and-requirejs) to declare and bring in dependencies in JS, but we'll stick with it for this tutorial*
+
 ## Step 3 - ...and making them work in the browser...
 
 - Open indexB.html in the browser
