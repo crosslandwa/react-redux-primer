@@ -54,4 +54,6 @@ At it's simplest, webpack is a tool for **bundling** all your application's java
  - minification
  - splitting your app into multiple JS files to optimize browser loading
 
+Both webpack and it's dev-server can take command line options (as we've done here), but is typically used with a JS config file (`webpack.config.js` by default). All subsequent usage in this tutorial will be via config files
+
 There's loads more about webpack (and it's dev server) here: https://webpack.js.org/
