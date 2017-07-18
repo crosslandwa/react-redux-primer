@@ -1,7 +1,7 @@
 # React-Redux Primer
 
 **What**
-One (of many) getting started guides for React Redux?
+One (of many) getting started guides for React/Redux
 
 **Why?**
 On a recent work project I started my team down the path of adopting these tools in production. This tutorial is a resource to get those in my team (and in collaborating teams) up to a shared useful base level of understanding of these tools, so we can collaborate and learn together. It assumes *almost zero* prior exposure to React/Redux (and *nearly zero* exposure to client side JS development)
@@ -10,12 +10,29 @@ It *does not* aim to be an exhaustive documentation resource for those tools (I'
 
 ## How to play along
 
+### Pre-requisites
+
+- Install node (version 6) and npm from here: https://nodejs.org/en/download/
+- Install some sort of editor/IDE (I've been pretty happy with [Atom](https://atom.io/))
+
+### Getting started
+
+Get the code
+```
+git clone {REPO_NAME}
+cd {REPO_NAME}
+npm install
+```
+then open the {REPO_NAME} folder in your IDE
+
 Cover here how to use this resource.
 
 ideas
 - start dev server with env variable that changes the entry point. Different entry point per step (means tutorial includes working code)
 - only minimal working code, get to final step together (how would you use this resource solo?)
 - branch(es) with answers, use compare/x...y to see the incremental changes
+
+**The play along steps throughout this tutorial assume have been written with the assumption you're using OS X**
 
 ## What is covered
 
