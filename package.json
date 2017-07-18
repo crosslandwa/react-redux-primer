@@ -11,6 +11,10 @@
     "redux",
     "webpack"
   ],
+  "devDependencies": {
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  },
   "author": "https://github.com/crosslandwa",
   "license": "ISC"
 }
