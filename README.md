@@ -34,17 +34,8 @@ Work through the technologies in the links below (note they build on each other 
 ## What is covered
 
 - [webpack/webpack dev server]('./webpack')
+- [React](./react)
 
-### React (not sure about order yet, just capturing the ideas to cover)
- - introduce unidirectional data flow (onclick invokes event handler, calls setState, triggers a re-render)
- - basic use of React/JSX to render some UI
- - Babel transpilation (JS is what is shipped to browser, inspect in dev tools)
- - Components as classes
- - Build a single component (UI), make it a click counter (STATE)
-
-### React without redux
- - make a list of tiles, with a bar below. Bar below says "you are watching x". Update "x" when tiles clicked. Highlight tile x (will force all other tiles to update their state)?
- - show components become coupled when onClick is passed in as prop from parent (One component influences state of other components)
 
 ### Redux
  - re-introduce unidirectional data flow (onclick dispatches action, calls reducer, triggers a re-render)
