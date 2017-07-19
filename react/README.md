@@ -39,7 +39,12 @@ Now finish knocking up the target HTML in JSX/React...
 ## Uni-directional flow
 
 Diagram
-Bullet point explanation
+
+Within a hierarchy of React components
+- Starting with some state, React **renders** all your components (passing that state via props down through your component hierarchy)
+- When components are interacted with **actions** are invoked
+- These actions call **setState** which merges any passed state with that component's current state
+- In response to setState being called, React **re-renders** your component (and it's children) with the new state
 
 ### Task
 Build a UI that:
@@ -49,16 +54,13 @@ Build a UI that:
 
 An example solution to this is given in react-task-solution.js
 
+*The key learning from this task is that when components start influencing the state of other components, things start to become complicated...*
+
 ### React (not sure about order yet, just capturing the ideas to cover)
  - introduce unidirectional data flow (onclick invokes event handler, calls setState, triggers a re-render)
  - basic use of React/JSX to render some UI
  - Components as classes
  - Build a single component (UI), make it a click counter (STATE)
-
-### React without redux
- - make a list of tiles, with a bar below. Bar below says "you are watching x". Update "x" when tiles clicked. Highlight tile x (will force all other tiles to update their state)?
- - show components become coupled when onClick is passed in as prop from parent (One component influences state of other components)
-
 
 
 ## More info
