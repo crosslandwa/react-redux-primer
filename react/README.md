@@ -30,10 +30,28 @@ JSX is not real code! If we try and execute in our browser it will fail. We need
 
 Now finish knocking up the target HTML in JSX/React...
 
+## Step 2 - Passing props
+
+## Step 3 - Adding styles
+
+## Step 4 - Triggering actions
+
+## Uni-directional flow
+
+Diagram
+Bullet point explanation
+
+### Task
+Build a UI that:
+- displays a row of four "Tiles", each containing a name, that sit over a "Watching Bar"
+- the Watching Bar should initially contain the text "You are watching: nothing"
+- when you click the Tiles, update the Watching Bar to read "You are watching: {name}"
+
+An example solution to this is given in react-task-solution.js
+
 ### React (not sure about order yet, just capturing the ideas to cover)
  - introduce unidirectional data flow (onclick invokes event handler, calls setState, triggers a re-render)
  - basic use of React/JSX to render some UI
- - Babel transpilation (JS is what is shipped to browser, inspect in dev tools)
  - Components as classes
  - Build a single component (UI), make it a click counter (STATE)
 
