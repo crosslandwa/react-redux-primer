@@ -16,6 +16,11 @@ It takes the tedium out of creating HTML in your JS, and provides a whole heap o
   - Note that all the tutorial steps from now on use the same HTML document!
 - Open `react.js` in your editor, observe the nasty vanilla JS needed to create the desired HTML markup
 
+Now it's time to rewrite that native JS into JSX, and let React render it to the DOM for you
+- Uncomment the require statements at the start of `react.js` (webpack will take care of bundling these into your app!)
+- Uncomment the code block at the end of `react.js`
+- Start writing some [JSX](https://facebook.github.io/react/docs/introducing-jsx.html) to replace the creation of DOM elements in native JS
+  - Observe the webpack dev server output! *Module parse failed: You may need an appropriate loader to handle this file type.*
 
 ### React (not sure about order yet, just capturing the ideas to cover)
  - introduce unidirectional data flow (onclick invokes event handler, calls setState, triggers a re-render)

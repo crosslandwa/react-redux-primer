@@ -1,7 +1,11 @@
-/*
-const React = require('react')
-const ReactDOM = require('react-dom')
-*/
+// const React = require('react')
+// const ReactDOM = require('react-dom')
+
+const myNewHTML = document.createElement('div')
+const newSpan = document.createElement('span')
+const textNode = document.createTextNode('Hello World native JS stylee')
+newSpan.appendChild(textNode)
+myNewHTML.appendChild(newSpan)
 
 /*
 Target markup
@@ -12,17 +16,9 @@ Target markup
 </div>
 */
 
-const myNewHTML = document.createElement('div')
-const newSpan = document.createElement('span')
-const textNode = document.createTextNode('Hello World native JS stylee')
-newSpan.appendChild(textNode)
-myNewHTML.appendChild(newSpan)
-
 document.getElementById('app').appendChild(myNewHTML)
 
-/*
-ReactDOM.render(
-  myNewHTML,
-  document.getElementById('app')
-)
-*/
+// ReactDOM.render(
+//   <div/>,
+//   document.getElementById('app')
+// )
