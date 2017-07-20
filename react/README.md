@@ -20,7 +20,7 @@ Now it's time to rewrite that native JS into JSX, and let React render it to the
 - Uncomment the require statements at the start of `react.js` (webpack will take care of bundling these into your app!)
 - Uncomment the code block at the end of `react.js`
 - Start writing some [JSX](https://facebook.github.io/react/docs/introducing-jsx.html) to replace the creation of DOM elements in native JS
-  - An example of a JSX statement is `<div><span>Hi there!</span></div>`
+  - An example of a JSX statement is `<div>Hi there!</div>`
   - Observe the webpack dev server output! *Module parse failed: You may need an appropriate loader to handle this file type.*
 
 JSX is not real code! If we try and execute in our browser it will fail. We need to *transpile* it into normal JS that the browser understands
