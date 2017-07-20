@@ -55,6 +55,28 @@ const youCanUseVariablesToo = "this is also some label text"
 
 ## Step 3 - Adding styles
 
+React elements can have [inline styling added](https://facebook.github.io/react/docs/dom-elements.html#style) through the special `style` attribute
+
+```javascript
+const styling = {
+  fontSize: 20
+}
+<div style={styling}>this is the label text</div>
+```
+
+*Inline styling works surprisingly nicely, especially given how easy it becomes to scope your styles to your components (compared to using CSS)*
+
+Alternatively, styling via CSS is achieved by
+- Add classes to your React elements via the `className` attribute
+- Write your CSS using class based selectors (I like [BEM](http://getbem.com/introduction/))
+
+Making your CSS available can either be done via
+- adding <style> or <link> tags to your HTML document
+- `require`ing your CSS files into your JS and letting webpack bundle it into your build!
+  - this requires some extra [*webpack loaders* to handle the CSS](https://webpack.github.io/docs/stylesheets.html)
+
+**Go on, add some styling to your app!**
+
 ## Step 4 - Triggering actions
 
 ## Uni-directional flow
