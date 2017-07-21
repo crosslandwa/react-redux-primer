@@ -122,13 +122,6 @@ An example solution to this is given in react-task-solution.js
 
 *The key learning from this task is that when components start influencing the state of other components, things start to become complicated...*
 
-### React (not sure about order yet, just capturing the ideas to cover)
- - introduce unidirectional data flow (onclick invokes event handler, calls setState, triggers a re-render)
- - basic use of React/JSX to render some UI
- - Components as classes
- - Build a single component (UI), make it a click counter (STATE)
-
-
 ## More info
 
 The official [React Quick Start](https://facebook.github.io/react/docs/hello-world.html) is really good
