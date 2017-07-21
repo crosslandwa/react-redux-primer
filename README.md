@@ -33,8 +33,8 @@ Work through the technologies in the links below (note they build on each other 
 
 ## What is covered
 
-- [webpack/webpack dev server]('./webpack')
-- [React](./react)
+- [Webpack/Webpack dev server](webpack)
+- [React](react)
 
 
 ### Redux

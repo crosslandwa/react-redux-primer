@@ -11,22 +11,22 @@ It takes the tedium out of creating HTML in your JS, and provides a whole heap o
 
 - Start this step of the tutorial **from the root of this repo**
   - ```STEP=react npm start```
-  - This will start (via npm) the webpack dev-server, and point it at the `react.js` script in this folder
+  - This will start (via npm) the Webpack dev-server, and point it at the `react.js` script in this folder
   - It will output `bundle.js` which is referenced in the `index.html` document in the root of the repo
   - Note that all the tutorial steps from now on use the same HTML document!
 - Open `react.js` in your editor, observe the nasty vanilla JS needed to create the desired HTML markup
 
 Now it's time to rewrite that native JS into JSX, and let React render it to the DOM for you
-- Uncomment the require statements at the start of `react.js` (webpack will take care of bundling these into your app!)
+- Uncomment the require statements at the start of `react.js` (Webpack will take care of bundling these into your app!)
 - Uncomment the code block at the end of `react.js`
 - Start writing some [JSX](https://facebook.github.io/react/docs/introducing-jsx.html) to replace the creation of DOM elements in native JS
   - An example of a JSX statement is `<div>Hi there!</div>`
-  - Observe the webpack dev server output! *Module parse failed: You may need an appropriate loader to handle this file type.*
+  - Observe the Webpack dev server output! *Module parse failed: You may need an appropriate loader to handle this file type.*
 
 JSX is not real code! If we try and execute in our browser it will fail. We need to *transpile* it into normal JS that the browser understands
-- Uncomment the *module* key in the webpack config to turn on JSX transpilation
-  - This uses the [babel-loader](https://github.com/babel/babel-loader) webpack plugin to perform the transpilation
-- restart the webpack dev server
+- Uncomment the *module* key in the Webpack config to turn on JSX transpilation
+  - This uses the [babel-loader](https://github.com/babel/babel-loader) Webpack plugin to perform the transpilation
+- restart the Webpack dev server
 - use your dev tools to see how your JSX markup has been transformed into real code (generally into `React.createElement()` statements)
 
 Now finish knocking up the target HTML in JSX/React...
@@ -72,8 +72,8 @@ Alternatively, styling via CSS is achieved by
 
 Making your CSS available can either be done via
 - adding <style> or <link> tags to your HTML document
-- `require`ing your CSS files into your JS and letting webpack bundle it into your build!
-  - this requires some extra [*webpack loaders* to handle the CSS](https://webpack.github.io/docs/stylesheets.html)
+- `require`ing your CSS files into your JS and letting Webpack bundle it into your build!
+  - this requires some extra [*Webpack loaders* to handle the CSS](https://Webpack.github.io/docs/stylesheets.html)
 
 **Go on, add some styling to your app!**
 
