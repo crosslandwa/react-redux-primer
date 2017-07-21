@@ -79,7 +79,30 @@ Making your CSS available can either be done via
 
 ## Step 4 - Triggering actions
 
-## Uni-directional flow
+React elements support attributes, such as `onClick`, that can be assigned [functions to handle events](https://facebook.github.io/react/docs/handling-events.html)
+
+- Bring in the `Clickable` component (from `clickable.js`) to your app and click it!
+- Note how this uses the ES6 [class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a React Component
+- Note how the action can be passed in as a prop, try it!
+
+## Step 5 - State
+
+Previously our React components where simple functions that were passed props and rendered themselves. These are **super simple** to reason about, but limited in what they can do - they have no state!
+
+### Task
+Turn `Clickable` into a simple counter that displays the number of times it has been clicked
+- set some state in the constructor via `this.state = {}`
+  - note your components state is just a simple object
+- access that state in your render function via `this.state` (the same way you access `this.props`)
+- update that state in your action handler
+  - **DO NOT MUTATE `this.state` directly**
+  - instead use pass an object with any updated state to `this.setState()`
+
+What's super nice here is **React will take care of re-rendering your component after a state change!**. Make sure you read the official docs on [using React component state correctly](https://facebook.github.io/react/docs/state-and-lifecycle.html#using-state-correctly)
+
+*Declaring your Components as classes also allows you to hook into other [React lifecycle events](https://facebook.github.io/react/docs/react-component.html) which is useful for optimizations (e.g. avoiding re-renders) and other advanced usage*
+
+## Step 6 - Uni-directional flow
 
 Diagram
 
