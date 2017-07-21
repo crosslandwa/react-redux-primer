@@ -21,11 +21,11 @@ It *does not* aim to be an exhaustive documentation resource for those tools (I'
 
 Get the code
 ```
-git clone {REPO_NAME}
-cd {REPO_NAME}
+git clone git@github.com:crosslandwa/react-redux-primer.git
+cd react-redux-primer
 npm install
 ```
-then open the {REPO_NAME} folder in your IDE
+then open the react-redux-primer folder in your IDE
 
 Work through the technologies in the links below (note they build on each other so follow them in order) - each section links through to another directory/README in this repo with further steps/resources
 
