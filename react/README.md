@@ -73,7 +73,7 @@ Alternatively, styling via CSS is achieved by
 Making your CSS available can either be done via
 - adding <style> or <link> tags to your HTML document
 - `require`ing your CSS files into your JS and letting Webpack bundle it into your build!
-  - this requires some extra [*Webpack loaders* to handle the CSS](https://Webpack.github.io/docs/stylesheets.html)
+  - this requires some extra [*Webpack loaders* to handle the CSS](https://webpack.github.io/docs/stylesheets.html)
 
 **Go on, add some styling to your app!**
 
