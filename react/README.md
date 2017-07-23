@@ -117,8 +117,11 @@ Build a UI that:
 - displays a row of four "Tiles", each containing a name, that sit over a "Watching Bar"
 - the Watching Bar should initially contain the text "You are watching: nothing"
 - when you click the Tiles, update the Watching Bar to read "You are watching: {name}"
+- for bonus points, have some sort of visual indicator to higlight the currently selected Tile
 
-An example solution to this is given in react-task-solution.js
+An example solution to this is given in react-solution.js
+ - see it with `STEP=react-solution npm start`
+ - it uses CSS flex box for the layout. I found [Flexbox Froggy](http://flexboxfroggy.com/) a good resource for learning flex
 
 *The key learning from this task is that when components start influencing the state of other components, things start to become complicated...*
 

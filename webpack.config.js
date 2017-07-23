@@ -1,7 +1,8 @@
 const path = require('path')
 
 let entries = {
-  react: './react/react.js'
+  react: './react/react.js',
+  'react-solution': './react/react-solution.js'
 }
 
 if (!Object.keys(entries).includes(process.env.STEP)) {
