@@ -101,7 +101,7 @@ const mapDispatchToProps = (dispatch) => { doSomething: () => dispatch(myActionC
 
 The middleware is added by enhancing your store
 ```javascript
-const thunkMiddleware = require('redux-thunk')
+const thunkMiddleware = require('redux-thunk').default
 const store = Redux.createStore(myReducer, Redux.applyMiddleware(thunkMiddleware))
 ```
 
