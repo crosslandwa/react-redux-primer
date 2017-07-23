@@ -29,17 +29,21 @@ Where in your application should async actions (e.g. network requests) be implem
 
 ## Actions dispatching actions...
 
-Introduce into diagram in async section (add side note of reducing duplication if multiple components raise same action)
+![Redux uni-directional async data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalAsyncAction.svg)
 
-Redux-thunk (disclaimer, there are other ways to do this)
+Here we allow action creators to asynchronously **dispatch** other action creators, which in turn *may dispatch further action creators*, until eventually a plain *action* is dispatched, causing synchronous update of the Redux store. This workflow is implemented via [Redux thunk middleware](https://github.com/gaearon/redux-thunk) *(there are other ways of doing this, e.g. [redux-saga](https://redux-saga.js.org/) but we'll stick with thunks for this tutorial)*
 
-### Async/side-effects
- - extend unidirectional data flow model (onclick invokes action creator, action creator dispatches async action creator which dispatches action when done, calls reducer, triggers re-render)
- - make content of tiles come from network call
-
-### Middleware
+## Middleware
  - extend unidirectional data flow model to show where middleware fits in
  - go through using this for telemetry, stats, (cross cutting concerns)
+
+## Task
+
+Update your [solution from the redux tutorial](../redux#final-task) with the following modifications
+- Initialise your store state with an empty array of `titles`
+- Add a button to your UI that when clicked loads the `data.json` file over HTTP
+- Parse the titles from the loaded JSON and update your store state
+- Add some middleware that logs (to console) the outgoing network request
 
 ## More info
 
