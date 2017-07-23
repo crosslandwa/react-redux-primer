@@ -102,11 +102,17 @@ See [the docs](http://redux.js.org/docs/basics/Reducers.html) for more
 
 ## Final Task
 
-Re-implement the [task from the React section](../react#task) using Redux to manage the state. You should see that
+Re-implement the [task from the React section](../react#task) with the following modifications
+- use Redux to manage the state of the selected tile and the "title" you are watching
+- intialise your store to contain an array of "titles", e.g. `{titles: ['A', 'B', 'C', 'D']}`
+
+You should see that
 - all your components should become *dumb*
   - they simply render the props they're given
   - they no longer have to manage their own state (or their childrens' state, where you've had to *lift state up*)
-- if you install Chrome's [Redux dev tools](https://github.com/gaearon/redux-devtools) you can **see and debug** your application state
+- instead of *lifting state up* you can now *push extracting state back down* to the appropriate component
+
+I've provided an example solution in `redux-solution.js`, run it via `STEP=redux-solution npm start`
 
 ## More info
 

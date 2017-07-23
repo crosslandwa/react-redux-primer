@@ -3,7 +3,8 @@ const path = require('path')
 let entries = {
   react: './react/react.js',
   'react-solution': './react/react-solution.js',
-  redux: './redux/redux.js'
+  redux: './redux/redux.js',
+  'redux-solution': './redux/redux-solution.js'
 }
 
 if (!Object.keys(entries).includes(process.env.STEP)) {
