@@ -21,18 +21,25 @@ const mapDispatchToTilePropsUsingActionCreator = (dispatch, ownProps) => ({
   onClick: (title) => dispatch(updateWatchingCreator(ownProps.title))
 })
 ```
-## Async actions
+## Async behaviour
 
-Where in your application should async actions (e.g. network requests) sit? The simple (and probably best) answer is **always in your action creators**.
+Where in your application should async actions (e.g. network requests) be implemented? The Redux docs suggest ["in general, Redux suggests that code with side effects should be part of the action creation process. "](http://redux.js.org/docs/faq/Actions.html#how-can-i-represent-side-effects-such-as-ajax-calls-why-do-we-need-things-like-action-creators-thunks-and-middleware-to-do-async-behavior). Adhering to this approach lets you keep your components dumb (no state), and your reducers functional (state + action go in, new state out). We'll look at two ways of implementing this:
+- encapsulating the side-effecty code in *actions creators*
+- adding side-effecty code in *Redux middleware*
 
-Put another way, keep your components dumb (no state), and your reducers functional (state + action go in, new state comes out, **always**) - this leaves **only** your action creation code as a place to write code with side-effects...
-
-## Action creators
+## Actions dispatching actions...
 
 Introduce into diagram in async section (add side note of reducing duplication if multiple components raise same action)
 
 Redux-thunk (disclaimer, there are other ways to do this)
 
+### Async/side-effects
+ - extend unidirectional data flow model (onclick invokes action creator, action creator dispatches async action creator which dispatches action when done, calls reducer, triggers re-render)
+ - make content of tiles come from network call
+
+### Middleware
+ - extend unidirectional data flow model to show where middleware fits in
+ - go through using this for telemetry, stats, (cross cutting concerns)
 
 ## More info
 

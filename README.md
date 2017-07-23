@@ -36,14 +36,7 @@ Work through the technologies in the links below (note they build on each other 
 - [Webpack/Webpack dev server](webpack)
 - [React](react)
 - [Redux](redux)
-
-### Async/side-effects
- - extend unidirectional data flow model (onclick invokes action creator, action creator dispatches async action creator which dispatches action when done, calls reducer, triggers re-render)
- - make content of tiles come from iPlayer home section network call (do we need home/categories buttons to trigger the network request?)
-
-### Middleware
- - extend unidirectional data flow model to show where middleware fits in
- - go through using this for telemetry, stats, route changes in search module
+- [Redux and async actions](async-redux)
 
 ### Re-select
  - create anther type of tile, observe how parsing state is duplicated. Refactor to use re-select
