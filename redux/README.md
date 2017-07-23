@@ -59,11 +59,47 @@ function mapStateToProps (state, ownProps) => { return {} } // return a plain ob
 
 ## Dispatch some actions
 
-Finish implementing counter. mapDispatchToProps. reducers
+So far we've made a pretty useless counter, wrapped in quite a lot of framework (believe me, **it will all be worth it**) - lets start *dispatching actions* so it actually counts
 
-Introduce idea of combineReducers
+### Actions, reducers and dispatch
 
-## Task
+Actions are always plain JS objects that are passed to your store's [reducer function](redux.js#L14). The signature for your reducer is:
+```javascript
+function reducer (state, action) { return {} } // return the next state, also a plain object
+```
+
+Your reducer implementation should calculate the **next state of your application** based on the incoming action. The **shape** of your state and actions is therefore up to you...
+
+Redux provides a **dispatch** function that takes an action, and ultimately passes it to your *reducer*. Hooking your Components' up to dispatch is also handled via **connect**
+```javascript
+const action = {}
+const mapStateToProps = (state, ownProps) => ({})
+const mapDispatchToProps = (dispatch, ownProps) => ({ doSomething: () => dispatch(action)})
+const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
+```
+
+*mapDispatchToProps* gives you an opportunity to create functions (passed into your Component as props) that will invoke Redux's dispatch function. In the above example a `props.doSomething` is a function that when called will *dispatch* `action`
+
+- Update `<Counter>` to call an function that is passed via props
+- Implement `mapDispatchToProps` to dispatch as suitable action (e.g. `{ type: 'INCREMENT' }`)
+- Implement your reducer to update your application state when that action is received
+
+When you've done this, you should be amazed that:
+- Re-rendering your application happens automagically!
+- In the dev-tools you can see the actions being dispatched, and step through the corresponding state changes!
+
+### Super important notes
+
+Observe the following **rules** and guidelines
+- Your reducer must set up some initial state (as it will be called without an action when the store initialises)
+- Your reducer should return application state unchanged *if it receives actions it doesn't know about*
+- Your state **should** only put [plain data types in your Redux store](https://github.com/markerikson/redux/blob/create-faq-page/docs/FAQ.md#can-i-put-functions-promises-or-other-non-serializable-items-in-my-store-state) (strings, numbers, booleans, plain objects, etc)
+- Your reducer [**must never mutate state**](http://redux.js.org/docs/Troubleshooting.html#never-mutate-reducer-arguments) - instead you need to return a copied/modified state object
+- As your application grows in complexity, copying/modifying the state in a single reducer will become unwieldy - [combineReducers](http://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html) is a good approach for handling this complexity
+
+See [the docs](http://redux.js.org/docs/basics/Reducers.html) for more
+
+## Final Task
 
 Re-implement the [task from the React section](../react#task) using Redux to manage the state. You should see that
 - all your components should become *dumb*
