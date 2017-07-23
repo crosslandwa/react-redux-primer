@@ -27,9 +27,35 @@ The [react-redux bindings](http://redux.js.org/docs/basics/UsageWithReact.html) 
 - a **connect** function to let you inject store state into your components
 - a **dispatch** function to let your components dispatch actions
 
+Start the example app via `STEP=redux npm start`
+- note the boiler plate code of creating a **store** and an app wrapped in a **Provider** are done for you in `redux.js`
+- the boiler plate code has also connected up the Chrome [Redux dev tools](https://github.com/gaearon/redux-devtools)!
+
 ## Connect to the store
 
-Start to implement counter with Redux, with initial count in the store. mapStateToProps
+We're going to (re-)implement a simple counter, but this time the counter state will live in the Redux store
+
+- Initialise your store state with an initial `count` of zero
+  - use the dev tools to verify your initial state
+- Create a `<Counter>` component that displays the passed in `count` prop
+
+How do we extract the `count` from the store, and pass it to `<Counter>`? Say hello to **connect**
+```javascript
+const ReactReduxBindings = require('react-redux')
+const connect = ReactReduxBindings.connect
+const ConnectedCounter = connect(mapStateToProps)(Counter)
+```
+The connect function
+- takes a function *mapStateToProps* and returns another function
+- that second (curried(?)) function takes a React Component, and returns a *connected Component*
+
+### Task
+Create an implementation of *mapStateToProps* to extract `count` from your store state, and passes it as prop to the *connectedComponent*. Then render your connected component in your application
+
+The signature for *mapStateToProps* is:
+```javascript
+function mapStateToProps (state, ownProps) => { return {} } // return a plain object that redux will pass as (merged) props to the Component
+```
 
 ## Dispatch some actions
 
