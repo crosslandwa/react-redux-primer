@@ -10,7 +10,7 @@ To re-cap on the redux uni-directional data flow model:
 - Changes to the store stare trigger a re-render of your application (via the *subscribed* **Provider**)
 
 **Note**
-We've built on the model in the [Redux tutorial section](../redux#redux-uni-directional-flow) and introduced *action creators*. At they're simplest these are simply functions that return an **action** (a plain object) *which helps promote re-use/remove duplication* where multiple components raise the same action. The following are equivalent
+We've built on the model in the [Redux tutorial section](../redux#redux-uni-directional-flow) and introduced *action creators*. At they're simplest these are simply functions that return an **action** (a plain object). The following are equivalent
 ```javascript
 const mapDispatchToTileProps = (dispatch, ownProps) => ({
   onClick: (title) => dispatch({type: 'UPDATE_WATCHING', title: ownProps.title})
@@ -21,6 +21,8 @@ const mapDispatchToTilePropsUsingActionCreator = (dispatch, ownProps) => ({
   onClick: (title) => dispatch(updateWatchingCreator(ownProps.title))
 })
 ```
+These helps promote re-use/remove duplication where multiple components raise the same action. They are also crucial for adding aynchronous behaviour to your application. 
+
 ## Async behaviour
 
 Where in your application should async actions (e.g. network requests) be implemented? The Redux docs suggest ["in general, Redux suggests that code with side effects should be part of the action creation process. "](http://redux.js.org/docs/faq/Actions.html#how-can-i-represent-side-effects-such-as-ajax-calls-why-do-we-need-things-like-action-creators-thunks-and-middleware-to-do-async-behavior). Adhering to this approach lets you keep your components dumb (no state), and your reducers functional (state + action go in, new state out). We'll look at two ways of implementing this:
