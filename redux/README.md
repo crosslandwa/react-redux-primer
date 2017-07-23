@@ -11,7 +11,7 @@ Redux is a framework that applies the uni-directional data flow concept to your 
 
 The **uni-directional data flow** concept is absolutely core here, so lets look at the basic Redux implementation:
 
-![Redux uni-directional data flow diagram](ReduxUnidirectional.png?raw=true)
+![Redux uni-directional data flow diagram](ReduxUnidirectional.svg?raw=true)
 
 - A **Redux store** is creating with some initial state, and bound to your React application via a **Provider** (which is subscribed to the store)
 - React renders your components with the initial steps (passing state as props)
