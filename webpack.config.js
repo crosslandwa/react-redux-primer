@@ -19,6 +19,8 @@ module.exports = {
   output: {
     filename: 'bundle.js'
   },
+  // this is commented out to illustrate a point about transpilation in the react tutorial.
+  // You'll likely want to uncomment it...
   // module: {
   //   rules: [
   //     {
