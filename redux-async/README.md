@@ -120,6 +120,8 @@ Update your [solution from the redux tutorial](../redux#final-task) with the fol
 - Parse the titles from the loaded JSON and update your store state
 - Add some middleware that logs (to console) the outgoing network request
 
+I've provided an example solution in `redux-async-solution.js`, run it via `STEP=redux-async-solution npm start`
+
 ## More info
 
 The [Advanced section of the Redux docs](http://redux.js.org/docs/advanced/) is the place to go for (much) more detail

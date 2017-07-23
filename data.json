@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "item001",
+      "title": "Remote Data Item #1"
+    },
+    {
+      "id": "item002",
+      "title": "Remote Data Item #2"
+    },
+    {
+      "id": "item003",
+      "title": "Remote Data Item #3"
+    },
+    {
+      "id": "item004",
+      "title": "Remote Data Item #4"
+    }
+  ]
+}
