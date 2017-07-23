@@ -33,11 +33,20 @@ Where in your application should async actions (e.g. network requests) be implem
 
 ![Redux uni-directional async data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalAsyncAction2.svg)
 
-Here we allow action creators to asynchronously **dispatch** other action creators, which in turn *may dispatch further action creators*, until eventually a plain *action* is dispatched, causing synchronous update of the Redux store. This workflow is implemented via [Redux thunk middleware](https://github.com/gaearon/redux-thunk) *(there are other ways of doing this, e.g. [redux-saga](https://redux-saga.js.org/) but we'll stick with thunks for this tutorial)*
+Here we allow action creators to asynchronously **dispatch** other action creators, which in turn *may dispatch further action creators*, until eventually a plain *action* is dispatched, causing a synchronous update of the Redux store. This workflow is implemented via [Redux thunk middleware](https://github.com/gaearon/redux-thunk) *(there are other ways of doing this, e.g. [redux-saga](https://redux-saga.js.org/) but we'll stick with thunks for this tutorial)*
 
-## Middleware
- - extend unidirectional data flow model to show where middleware fits in
- - go through using this for telemetry, stats, (cross cutting concerns)
+### Middleware
+
+[Redux middleware](http://redux.js.org/docs/advanced/Middleware.html) provides a way for you to extend Redux by providing a pluggable point for you to **intercept actions** before they reach the Redux store. Redux provides an *applyMiddlware* function to enhance your Redux store
+```javascript
+```
+- start up the `redux-async.js` example with `STEP=redux-async npm start`
+  - this is a simple synchronous counter
+- write some custom middleware to `console.log` every `'INCREMENT'` action dispatched by the counter in the example
+
+### Thunk middleware
+
+Describe API here, make counter count with a 1 second delay via setTimeout
 
 ## Task
 

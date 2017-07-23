@@ -4,7 +4,8 @@ let entries = {
   react: './react/react.js',
   'react-solution': './react/react-solution.js',
   redux: './redux/redux.js',
-  'redux-solution': './redux/redux-solution.js'
+  'redux-solution': './redux/redux-solution.js',
+  'redux-async': './redux-async/redux-async.js'
 }
 
 if (!Object.keys(entries).includes(process.env.STEP)) {

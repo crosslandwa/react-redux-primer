@@ -41,8 +41,3 @@ Work through the technologies in the links below (note they build on each other 
 ### Re-select
  - create anther type of tile, observe how parsing state is duplicated. Refactor to use re-select
  - show diffs from drum machine to how this is critical in more complex app
-
-ideas
-- start dev server with env variable that changes the entry point. Different entry point per step (means tutorial includes working code)
-- only minimal working code, get to final step together (how would you use this resource solo?)
-- branches with answers, use compare/x...y to see the incremental changes
