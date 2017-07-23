@@ -27,6 +27,8 @@ These helps promote re-use/remove duplication where multiple components raise th
 
 [Redux middleware](http://redux.js.org/docs/advanced/Middleware.html) provides a way for you to extend Redux by providing a pluggable point for you to **intercept actions** before they reach the Redux store. Middleware is **a good way** to implement **cross cutting concerns** (e.g. logging, stats reporting, access control, etc)
 
+![Redux middleware diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalMiddleware.svg)
+
 Redux provides an *applyMiddleware* function to enhance your Redux store
 ```javascript
 const Redux = require('redux')
