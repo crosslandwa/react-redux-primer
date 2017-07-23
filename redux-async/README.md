@@ -37,12 +37,40 @@ Here we allow action creators to asynchronously **dispatch** other action creato
 
 ### Middleware
 
-[Redux middleware](http://redux.js.org/docs/advanced/Middleware.html) provides a way for you to extend Redux by providing a pluggable point for you to **intercept actions** before they reach the Redux store. Redux provides an *applyMiddlware* function to enhance your Redux store
+[Redux middleware](http://redux.js.org/docs/advanced/Middleware.html) provides a way for you to extend Redux by providing a pluggable point for you to **intercept actions** before they reach the Redux store. Redux provides an *applyMiddleware* function to enhance your Redux store
 ```javascript
+const Redux = require('redux')
+const reducer = (state = {}) => state
+Redux.createStore(
+  reducer,
+  Redux.applyMiddleware(myMiddleware)
+)
 ```
+In a non ES6 world, the rather clunky interface for creating middleware is:
+```javascript
+function myMiddleware (store) {
+  return function (next) {
+    return function (action) {
+      // implement your middleware logic here
+      return next(action) // pass on action to next middleware in the chain (or the Redu store)
+    }
+  }
+}
+```
+
+which in ES6, via arrow functions becomes
+```javascript
+const myMiddleware = (store) => (next) => (action) => {
+  // your code here
+  return next(action)
+}
+```
+
 - start up the `redux-async.js` example with `STEP=redux-async npm start`
   - this is a simple synchronous counter
 - write some custom middleware to `console.log` every `'INCREMENT'` action dispatched by the counter in the example
+- *enhance your store* to use it
+  - note the Redux dev tools are also added by enhancing the store. Getting this to work alongside your new middleware requires you to [compose enhancers](https://github.com/zalmoxisus/redux-devtools-extension#12-advanced-store-setup)
 
 ### Thunk middleware
 
