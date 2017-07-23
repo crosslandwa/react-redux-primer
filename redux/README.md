@@ -19,6 +19,14 @@ The **uni-directional data flow** concept is absolutely core here, so lets look 
 - The **Redux store** receives these actions, and uses **reducers** to *merge the current application state and the action to create a new application state*
 - Changes to the store stare trigger a re-render of your application (via the *subscribed* **Provider**)
 
+### Redux
+ - re-introduce unidirectional data flow (onclick dispatches action, calls reducer, triggers a re-render)
+ - connect up tiles and watching bar from previous example
+
+### Action creators
+ - make two tiles, show they duplicate creation of action, refactor into action creator
+
+
 ## More info
 
 The official [Redux docs](http://redux.js.org/) are great (though I found the 'getting started' element less easy to follow than the equivalent in the React docs...)

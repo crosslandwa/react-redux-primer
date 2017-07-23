@@ -35,14 +35,7 @@ Work through the technologies in the links below (note they build on each other 
 
 - [Webpack/Webpack dev server](webpack)
 - [React](react)
-
-
-### Redux
- - re-introduce unidirectional data flow (onclick dispatches action, calls reducer, triggers a re-render)
- - connect up tiles and watching bar from previous example
-
-### Action creators
- - make two tiles, show they duplicate creation of action, refactor into action creator
+- [Redux](redux)
 
 ### Async/side-effects
  - extend unidirectional data flow model (onclick invokes action creator, action creator dispatches async action creator which dispatches action when done, calls reducer, triggers re-render)
