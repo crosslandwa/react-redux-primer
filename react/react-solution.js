@@ -19,7 +19,7 @@ class App extends React.Component {
       <div style={{
         display: 'flex',
         flexDirection: 'column',
-        width: 800,
+        maxWidth: 800,
         height: 200,
         justifyContent: 'space-around',
         margin: 'auto'

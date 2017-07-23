@@ -9,7 +9,7 @@ const connect = ReactReduxBindings.connect
 // Our React app
 const mapStateToAppProps = (state) => ({titles: state.titles})
 const App = connect(mapStateToAppProps)((props) => (
-  <div style={{display: 'flex', flexDirection: 'column', width: 800, height: 200, justifyContent: 'space-around', margin: 'auto' }}>
+  <div style={{display: 'flex', flexDirection: 'column', maxWidth: 800, height: 200, justifyContent: 'space-around', margin: 'auto' }}>
     <div style={{display: 'flex', justifyContent: 'space-around'}}>
       {(props.titles).map((title, index) => <Tile key={index} title={title} />)}
     </div>
