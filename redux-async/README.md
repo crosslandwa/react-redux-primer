@@ -99,6 +99,12 @@ function myActionCreator () {
 const mapDispatchToProps = (dispatch) => { doSomething: () => dispatch(myActionCreator()) }
 ```
 
+The middleware is added by enhancing your store
+```javascript
+const thunkMiddleware = require('redux-thunk')
+const store = Redux.createStore(myReducer, Redux.applyMiddleware(thunkMiddleware))
+```
+
 - Update your synchronous counter to be asynchronous
   - Add redux-thunk middleware to your store
   - Return a **thunk** instead of an **action** from your action creator
