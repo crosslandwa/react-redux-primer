@@ -70,8 +70,8 @@ Alternatively, styling via CSS is achieved by
 - Add classes to your React elements via the `className` attribute
 - Write your CSS using class based selectors (I like [BEM](http://getbem.com/introduction/))
 
-Making your CSS available can either be done via
-- adding <style> or <link> tags to your HTML document
+Making your CSS available by either:
+- adding `<style>` or `<link>` tags to your HTML document
 - `require`ing your CSS files into your JS and letting Webpack bundle it into your build!
   - this requires some extra [*Webpack loaders* to handle the CSS](https://webpack.github.io/docs/stylesheets.html)
 
@@ -82,7 +82,7 @@ Making your CSS available can either be done via
 React elements support attributes, such as `onClick`, that can be assigned [functions to handle events](https://facebook.github.io/react/docs/handling-events.html)
 
 - Bring in the `Clickable` component (from `clickable.js`) to your app and click it!
-- Note how this uses the ES6 [class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a React Component
+- Note how this uses the ES6 [class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) syntax to define a React Component
 - Note how the action can be passed in as a prop, try it!
 
 ## Step 5 - State
@@ -91,7 +91,7 @@ Previously our React components where simple functions that were passed props an
 
 ### Task
 Turn `Clickable` into a simple counter that displays the number of times it has been clicked
-- set some state in the constructor via `this.state = {}`
+- set some initial state in the constructor via `this.state = {}`
   - note your components state is just a simple object
 - access that state in your render function via `this.state` (the same way you access `this.props`)
 - update that state in your action handler
@@ -122,6 +122,7 @@ Build a UI that:
 An example solution to this is given in react-solution.js
  - see it with `STEP=react-solution npm start`
  - it uses CSS flex box for the layout. I found [Flexbox Froggy](http://flexboxfroggy.com/) a good resource for learning flex
+ - note how the solution [lifts state up](https://facebook.github.io/react/docs/lifting-state-up.html) out of the Tile/WatchingBar components
 
 *The key learning from this task is that when components start influencing the state of other components, things start to become complicated...*
 
