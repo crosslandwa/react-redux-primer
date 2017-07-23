@@ -38,6 +38,8 @@ Work through the technologies in the links below (note they build on each other 
 - [Redux](redux)
 - [Redux and async actions](redux-async)
 
-### Re-select
- - create anther type of tile, observe how parsing state is duplicated. Refactor to use re-select
- - show diffs from drum machine to how this is critical in more complex app
+Once you've covered the four areas above that's it, you're ready to build powerful web apps!
+
+The tutorials above are basic introductions to each area, but give enough context and information to get going. Be sure to check out the linked documentation in each section (generally links to the official docs)
+
+After that, I've collected some thoughts here on [techniques to manage complexity](MANAGING_COMPLEXITY.md) as your application grows
