@@ -19,13 +19,31 @@ The **uni-directional data flow** concept is absolutely core here, so lets look 
 - The **Redux store** receives these actions, and uses **reducers** to *merge the current application state and the action to create a new application state*
 - Changes to the store stare trigger a re-render of your application (via the *subscribed* **Provider**)
 
-### Redux
- - re-introduce unidirectional data flow (onclick dispatches action, calls reducer, triggers a re-render)
- - connect up tiles and watching bar from previous example
+## Gluing React & Redux together
 
-### Action creators
- - make two tiles, show they duplicate creation of action, refactor into action creator
+The [react-redux bindings](http://redux.js.org/docs/basics/UsageWithReact.html) are the glue that let your React app and Redux co-exist. The basics added are:
+- a **createStore** function to initialise a Redux store
+- a **Provider** React component that wraps your React application (and subscribes to the store)
+- a **connect** function to let you inject store state into your components
+- a **dispatch** function to let your components dispatch actions
 
+## Connect to the store
+
+Start to implement counter with Redux, with initial count in the store. mapStateToProps
+
+## Dispatch some actions
+
+Finish implementing counter. mapDispatchToProps. reducers
+
+Introduce idea of combineReducers
+
+## Task
+
+Re-implement the [task from the React section](../react#task) using Redux to manage the state. You should see that
+- all your components should become *dumb*
+  - they simply render the props they're given
+  - they no longer have to manage their own state (or their childrens' state, where you've had to *lift state up*)
+- if you install Chrome's [Redux dev tools](https://github.com/gaearon/redux-devtools) you can **see and debug** your application state
 
 ## More info
 
