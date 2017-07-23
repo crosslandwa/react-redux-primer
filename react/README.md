@@ -104,7 +104,7 @@ What's super nice here is **React will take care of re-rendering your component 
 
 ## Step 6 - Uni-directional flow
 
-Diagram
+![React uni-directional data flow diagram](ReactUnidirectional.png?raw=true)
 
 Within a hierarchy of React components
 - Starting with some state, React **renders** all your components (passing that state via props down through your component hierarchy)
