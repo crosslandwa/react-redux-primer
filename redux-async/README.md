@@ -1,6 +1,6 @@
 # Redux and async actions
 
-![Redux uni-directional data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalActionCreator.svg)
+![Redux uni-directional data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalActionCreator2.svg)
 
 To re-cap on the redux uni-directional data flow model:
 - A **Redux store** is creating with some initial state, and bound to your React application via a **Provider** (which is subscribed to the store)
@@ -21,7 +21,7 @@ const mapDispatchToTilePropsUsingActionCreator = (dispatch, ownProps) => ({
   onClick: (title) => dispatch(updateWatchingCreator(ownProps.title))
 })
 ```
-These helps promote re-use/remove duplication where multiple components raise the same action. They are also crucial for adding aynchronous behaviour to your application. 
+These helps promote re-use/remove duplication where multiple components raise the same action. They are also crucial for adding aynchronous behaviour to your application.
 
 ## Async behaviour
 
@@ -31,7 +31,7 @@ Where in your application should async actions (e.g. network requests) be implem
 
 ## Actions dispatching actions...
 
-![Redux uni-directional async data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalAsyncAction.svg)
+![Redux uni-directional async data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalAsyncAction2.svg)
 
 Here we allow action creators to asynchronously **dispatch** other action creators, which in turn *may dispatch further action creators*, until eventually a plain *action* is dispatched, causing synchronous update of the Redux store. This workflow is implemented via [Redux thunk middleware](https://github.com/gaearon/redux-thunk) *(there are other ways of doing this, e.g. [redux-saga](https://redux-saga.js.org/) but we'll stick with thunks for this tutorial)*
 
