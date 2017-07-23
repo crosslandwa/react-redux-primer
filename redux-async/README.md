@@ -21,30 +21,17 @@ const mapDispatchToTilePropsUsingActionCreator = (dispatch, ownProps) => ({
   onClick: (title) => dispatch(updateWatchingCreator(ownProps.title))
 })
 ```
-These helps promote re-use/remove duplication where multiple components raise the same action. They are also crucial for adding aynchronous behaviour to your application.
+These helps promote re-use/remove duplication where multiple components raise the same action. They are also crucial for adding aynchronous behaviour to your application (more later).
 
-## Async behaviour
+## Middleware
 
-Where in your application should async actions (e.g. network requests) be implemented? The Redux docs suggest ["in general, Redux suggests that code with side effects should be part of the action creation process. "](http://redux.js.org/docs/faq/Actions.html#how-can-i-represent-side-effects-such-as-ajax-calls-why-do-we-need-things-like-action-creators-thunks-and-middleware-to-do-async-behavior). Adhering to this approach lets you keep your components dumb (no state), and your reducers functional (state + action go in, new state out). We'll look at two ways of implementing this:
-- encapsulating the side-effecty code in *actions creators*
-- adding side-effecty code in *Redux middleware*
+[Redux middleware](http://redux.js.org/docs/advanced/Middleware.html) provides a way for you to extend Redux by providing a pluggable point for you to **intercept actions** before they reach the Redux store. Middleware is **a good way** to implement **cross cutting concerns** (e.g. logging, stats reporting, access control, etc)
 
-## Actions dispatching actions...
-
-![Redux uni-directional async data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalAsyncAction2.svg)
-
-Here we allow action creators to asynchronously **dispatch** other action creators, which in turn *may dispatch further action creators*, until eventually a plain *action* is dispatched, causing a synchronous update of the Redux store. This workflow is implemented via [Redux thunk middleware](https://github.com/gaearon/redux-thunk) *(there are other ways of doing this, e.g. [redux-saga](https://redux-saga.js.org/) but we'll stick with thunks for this tutorial)*
-
-### Middleware
-
-[Redux middleware](http://redux.js.org/docs/advanced/Middleware.html) provides a way for you to extend Redux by providing a pluggable point for you to **intercept actions** before they reach the Redux store. Redux provides an *applyMiddleware* function to enhance your Redux store
+Redux provides an *applyMiddleware* function to enhance your Redux store
 ```javascript
 const Redux = require('redux')
 const reducer = (state = {}) => state
-Redux.createStore(
-  reducer,
-  Redux.applyMiddleware(myMiddleware)
-)
+Redux.createStore(reducer, Redux.applyMiddleware(myMiddleware))
 ```
 In a non ES6 world, the rather clunky interface for creating middleware is:
 ```javascript
@@ -52,7 +39,7 @@ function myMiddleware (store) {
   return function (next) {
     return function (action) {
       // implement your middleware logic here
-      return next(action) // pass on action to next middleware in the chain (or the Redu store)
+      return next(action) // pass on action to next middleware in the chain (or the Redux store)
     }
   }
 }
@@ -61,7 +48,7 @@ function myMiddleware (store) {
 which in ES6, via arrow functions becomes
 ```javascript
 const myMiddleware = (store) => (next) => (action) => {
-  // your code here
+  // your middleware code here
   return next(action)
 }
 ```
@@ -70,17 +57,58 @@ const myMiddleware = (store) => (next) => (action) => {
   - this is a simple synchronous counter
 - write some custom middleware to `console.log` every `'INCREMENT'` action dispatched by the counter in the example
 - *enhance your store* to use it
-  - note the Redux dev tools are also added by enhancing the store. Getting this to work alongside your new middleware requires you to [compose enhancers](https://github.com/zalmoxisus/redux-devtools-extension#12-advanced-store-setup)
+  - note the Redux dev tools are also added by enhancing the store
+  - Getting this to work alongside your new middleware requires you to [compose enhancers](https://github.com/zalmoxisus/redux-devtools-extension#12-advanced-store-setup)
 
-### Thunk middleware
+## Async behaviour
 
-Describe API here, make counter count with a 1 second delay via setTimeout
+Where in your application should async actions (e.g. network requests) be implemented? The Redux docs suggest ["in general, Redux suggests that code with side effects should be part of the action creation process. "](http://redux.js.org/docs/faq/Actions.html#how-can-i-represent-side-effects-such-as-ajax-calls-why-do-we-need-things-like-action-creators-thunks-and-middleware-to-do-async-behavior). Adhering to this approach lets you
+- keep your components dumb (no state)
+- keep your reducers functional (state + action go in, new state comes out)
+
+These qualities make those parts of your application *easy to reason about*, and therefore simple to test...
+
+We'll now look at how
+
+### Actions dispatching actions with Thunk middleware...
+
+![Redux uni-directional async data flow diagram](https://rawgit.com/crosslandwa/react-redux-primer/master/redux-async/ReduxUnidirectionalAsyncAction2.svg)
+
+This workflow is implemented via [Redux thunk middleware](https://github.com/gaearon/redux-thunk) with the following steps
+- Action creators can now create either
+  - **actions**, i.e. plain objects, which will be dealt with in the normal way
+  - **thunks**, which are functions
+- Thunk middleware **intercepts any thunks**
+  - they are not passed on to the redux store, as they *are not plain objects*
+  - they are passed Redux's **dispatch** function
+- Your thunk implementation can perform asynchronous actions and call **dispatch** once complete, choosing to
+  - dispatch further **actions** or **thunks**
+  - optionally do nothing
+
+A **thunk** is just a function, with the following API
+```javascript
+function myActionCreator () {
+  return function (dispatch, getState) {
+    // thunk code here
+    // note you can dispatch further actions/thunks by calling dispatch()
+    // note you can retrieve the store state by calling getState()
+  }
+}
+const mapDispatchToProps = (dispatch) => { doSomething: () => dispatch(myActionCreator()) }
+```
+
+- Update your synchronous counter to be asynchronous
+  - Add redux-thunk middleware to your store
+  - Return a **thunk** instead of an **action** from your action creator
+  - Use `setTimeout` in your thunk to *dispatch an `'INCREMENT'` action* after some delay
+
+*Note there are other ways of doing asynchronous code in Redux, e.g. [redux-saga](https://redux-saga.js.org/) but we'll stick with thunks for this tutorial*
 
 ## Task
 
 Update your [solution from the redux tutorial](../redux#final-task) with the following modifications
 - Initialise your store state with an empty array of `titles`
-- Add a button to your UI that when clicked loads the `data.json` file over HTTP
+- Add button to your UI that when clicked loads the `data.json` file over HTTP
 - Parse the titles from the loaded JSON and update your store state
 - Add some middleware that logs (to console) the outgoing network request
 
