@@ -36,7 +36,7 @@ Work through the technologies in the links below (note they build on each other 
 - [Webpack/Webpack dev server](webpack)
 - [React](react)
 - [Redux](redux)
-- [Redux and async actions](async-redux)
+- [Redux and async actions](redux-async)
 
 ### Re-select
  - create anther type of tile, observe how parsing state is duplicated. Refactor to use re-select
