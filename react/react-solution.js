@@ -1,7 +1,7 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 
-const titles = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+const titles = ['A', 'B', 'C', 'D']
 
 class App extends React.Component {
   constructor(props) {
