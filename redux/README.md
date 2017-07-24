@@ -54,7 +54,7 @@ Create an implementation of *mapStateToProps* to extract `count` from your store
 
 The signature for *mapStateToProps* is:
 ```javascript
-function mapStateToProps (state, ownProps) => { return {} } // return a plain object that redux will pass as (merged) props to the Component
+function mapStateToProps (state, ownProps) { return {} } // return a plain object that redux will pass as (merged) props to the Component
 ```
 
 ## Dispatch some actions
