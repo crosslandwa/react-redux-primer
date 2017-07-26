@@ -29,7 +29,10 @@ then open the react-redux-primer folder in your IDE
 
 Work through the technologies in the links below (note they build on each other so follow them in order) - each section links through to another directory/README in this repo with further steps/resources
 
-**The play along steps throughout this tutorial have been written with the assumption you're using OS X**
+Two final things to note before you get started
+- The play along steps throughout this tutorial have been written with the assumption you're using OS X
+- I've tried to write the snippets of code in the tutorial in ES5 (for ease of understanding without having to mentally parse the ES6 syntax)
+- The provided solutions tend to use ES6 syntax (it offers a lot for brevity/clarity of intent)
 
 ## What is covered
 
