@@ -69,13 +69,28 @@ This packaging by module helps you see what Components may collaborate to delive
 
 ## Action creators almost always
 
+I've found it beneficial to use action creators by default, and *only dispatch actions inline when I'm being lazy...*
+
+My main motivations for this is decoupling knowledge of how an action is created from the Component, specifically whether the action (in a Redux Thunk world) is dispatched synchronously or asynchronously. Being able to change the implementation of the action creation without touching the Component dispatching it (unless the action creator's signature changes) is a win.
+
+Further, encapsulating into action creators makes it easy for multiple (UI) components to dispatch the same actions
+
+This [blog post](http://blog.isquaredsoftware.com/2016/10/idiomatic-redux-why-use-action-creators/) discusses the issue in more detail
 
 
 ## Normalised state
 
+Link the real docs
+Persistent state is Normalised
+Transient state (UI state for the session) de-normalised
 
+## Abstract querying store state
 
-## Re-select
+Demonstrate by example
 
-Intro to library
-Link diffs in drum machine that show consolidation of duplicated state parsing
+Remove duplication and ease re-factoring where several components/modules in app influenced by same state
+ - Link diffs in drum machine that show consolidation of duplicated state parsing
+
+Link to Re-select as library that adds this with performance gains through memoization (assuming not memory constrained)
+
+Using thunks makes use of re-select easier as you have access to getState in your action creators
