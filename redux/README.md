@@ -73,8 +73,12 @@ Your reducer implementation should calculate the **next state of your applicatio
 Redux provides a **dispatch** function that takes an action, and ultimately passes it to your *reducer*. Hooking your Components' up to dispatch is also handled via **connect**
 ```javascript
 const action = {}
-const mapStateToProps = (state, ownProps) => ({})
-const mapDispatchToProps = (dispatch, ownProps) => ({ doSomething: () => dispatch(action)})
+function mapStateToProps (state, ownProps) {
+  return {}
+}
+function mapDispatchToProps (dispatch, ownProps) {
+  return { doSomething: function () { dispatch(action) } }
+}
 const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
 ```
 

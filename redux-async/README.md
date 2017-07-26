@@ -12,14 +12,22 @@ To re-cap on the redux uni-directional data flow model:
 **Note**
 We've built on the model in the [Redux tutorial section](../redux#redux-uni-directional-flow) and introduced *action creators*. At they're simplest these are simply functions that return an **action** (a plain object). The following are equivalent
 ```javascript
-const mapDispatchToTileProps = (dispatch, ownProps) => ({
-  onClick: (title) => dispatch({type: 'UPDATE_WATCHING', title: ownProps.title})
-})
+// dispatch inline
+function mapDispatchToTileProps (dispatch, ownProps) {
+  return {
+    onClick: function (title) { dispatch({type: 'UPDATE_WATCHING', title: ownProps.title}) }
+  }
+}
 
-const updateWatchingCreator = (title) => ({type: 'UPDATE_WATCHING', title: title})
-const mapDispatchToTilePropsUsingActionCreator = (dispatch, ownProps) => ({
-  onClick: (title) => dispatch(updateWatchingCreator(ownProps.title))
-})
+// dispatch via action creator
+function updateWatchingCreator (title) {
+  return {type: 'UPDATE_WATCHING', title: title}
+}
+function mapDispatchToTilePropsUsingActionCreator (dispatch, ownProps) {
+  return {
+    onClick: function (title) { dispatch(updateWatchingCreator(ownProps.title)) }
+  }
+}
 ```
 These helps promote re-use/remove duplication where multiple components raise the same action. They are also crucial for adding aynchronous behaviour to your application (more later).
 
@@ -32,7 +40,9 @@ These helps promote re-use/remove duplication where multiple components raise th
 Redux provides an *applyMiddleware* function to enhance your Redux store
 ```javascript
 const Redux = require('redux')
-const reducer = (state = {}) => state
+function reducer (state = {}) {
+  return state
+}
 Redux.createStore(reducer, Redux.applyMiddleware(myMiddleware))
 ```
 In a non ES6 world, the rather clunky interface for creating middleware is:
@@ -96,7 +106,13 @@ function myActionCreator () {
     // note you can retrieve the store state by calling getState()
   }
 }
-const mapDispatchToProps = (dispatch) => { doSomething: () => dispatch(myActionCreator()) }
+```
+
+Dispatched in the same way as a plain action
+```javascript
+function mapDispatchToProps (dispatch) {
+  return { doSomething: function () { dispatch(myActionCreator()) } }
+}
 ```
 
 The middleware is added by enhancing your store
