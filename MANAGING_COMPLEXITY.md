@@ -119,11 +119,46 @@ All my *other state* (typically transient UI state such as loading spinners, use
 
 ## Abstract querying store state
 
-Demonstrate by example
+If you connect your Components you will probably find yourself writing things like:
+```javascript
+const mapDispatchToProps = (state) => ({ b: state.thing.a.b })
+```
 
-Remove duplication and ease re-factoring where several components/modules in app influenced by same state
- - Link diffs in drum machine that show consolidation of duplicated state parsing
+If you use Redux thunks you'll like write action creators like:
+```javascript
+function myActionCreator (delta) {
+  return (dispatch, getState) {
+    return {
+      type: 'AN_ACTION'
+      b: getState().thing.a.b + delta
+    }
+  }
+}
+```
 
-Link to Re-select as library that adds this with performance gains through memoization (assuming not memory constrained)
+Both of the above snippets access some nested property `thing.a.b` from your redux store. What happens if lots of places in your app need to access `b`? What if you find you want to change the shape of your store state, so `b` now resides somewhere else, e.g. `thing.a.meta.b`? The following minor refactor addresses these issues:
+```javascript
+const bSelector (state) => state.thing.a.b
 
-Using thunks makes use of re-select easier as you have access to getState in your action creators
+const mapDispatchToProps = (state) => ({ b: bSelector(state) })
+
+function myActionCreator (delta) {
+  return (dispatch, getState) {
+    return {
+      type: 'AN_ACTION'
+      b: bSelector(getState()) + delta
+    }
+  }
+}
+```
+
+I found using some layer of abstraction when querying you're store state offers two big benefits:
+- reduce duplication where state is used in multiple places
+- decouple components/action creators from specifics of store state shape
+  - **this is especially useful if you need to refactor your state!**
+
+This is especially helpful in a large application. The following commits show a few of the refactoring steps I undertook in a project where I moved to using [redux-reselect](https://github.com/reactjs/reselect) to replace direct querying of my state. In retro-spect, I'd definitely advocate adding that abstraction from the start in spite of the additional complexity it would have added initially...
+- https://github.com/crosslandwa/push-wrapper-with-react/commit/76aaf530417a44950c6f171ccd12794241d0a64a
+- https://github.com/crosslandwa/push-wrapper-with-react/commit/6fae7c048b75a6e93810134be1696dc86f2d82c9
+
+Finally, re-select potentially gives you a performance boost through memoizing the selectors you write, which can be good (assuming you're not running in a memory constrained environment...)
