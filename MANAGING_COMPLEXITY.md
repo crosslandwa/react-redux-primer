@@ -80,9 +80,42 @@ This [blog post](http://blog.isquaredsoftware.com/2016/10/idiomatic-redux-why-us
 
 ## Normalised state
 
-Link the real docs
-Persistent state is Normalised
-Transient state (UI state for the session) de-normalised
+The Redux docs can explain [Normalizing state shape](http://redux.js.org/docs/recipes/reducers/NormalizingStateShape.html) better than I can, but I whole-heartedly recommend the practice, having found the following benefits
+
+### IDs
+
+With normalised data, referenced by IDs, the props you pass round your Component hierarchy typically reduce down to just that ID. In a given *connected component* you can retrieve a fully hydrated object from your store with this ID to gain access to specific attributes of that object your component.
+
+This is **much easier to reason about and implement consistently** in comparison to passing the item (or a subset of its attributes) through your Component's props. Additionally, you potentially benefit from reduced React re-renders, as the passed Component props are less prone to change (the ID potentially changes less frequently than the nested attribute of an item)
+
+### Relationships in store state
+
+Treating your normalised "entities" like a relational database makes relationships between discrete parts of your state tree explicit and therefore easier to infer. In a de-normalised store, relationships/coupling between discrete parts of state may be hidden
+
+### Persistence
+
+Finally, I've had success using the following general state shape:
+```javascript
+{
+  uiThingA: {},
+  uiThingB: {},
+  entities: {
+    persistentThingA: {
+      byId: {},
+      allIds: []
+    },
+    persistentThingB: {
+      byId: {},
+      allIds: []
+    }
+  }
+}
+```
+
+I treat all my normalised state as persistent, i.e. I expect to be able to serialise/de-serialise this state (say to a file, a database, or perhaps to [local storage](https://github.com/elgerlambert/redux-localstorage)) if I want to store/restore application state between sessions.
+
+All my *other state* (typically transient UI state such as loading spinners, user input, etc) is kept de-normalised, and I expect it to reset between sessions, to be re-populated as necessary as the user interacts with the application
+
 
 ## Abstract querying store state
 
