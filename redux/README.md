@@ -68,11 +68,26 @@ Actions are plain JS objects that are passed to your store's [reducer function](
 function reducer (state, action) { return {} } // return the next state, also a plain object
 ```
 
+Your reducer is plugged into the Redux store at the point of creation. Wrapping your app in a `Provider` makes the store available to the app:
+```javascript
+const ReactReduxBindings = require('react-redux')
+const Provider = ReactReduxBindings.Provider
+const store = Redux.createStore(reducer)
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+)
+```
+
 Your reducer implementation should calculate the **next state of your application** based on the incoming action. The **shape** of your state and actions is therefore up to you...
+
+*Note that Redux requires your action to have a `type: String` attribute, but mandates nothing beyond that*
 
 Redux provides a **dispatch** function that takes an action, and ultimately passes it to your *reducer*. Hooking your Components' up to dispatch is also handled via **connect**
 ```javascript
-const action = {}
+const action = { type: 'MY_ACTION' }
 function mapStateToProps (state, ownProps) {
   return {}
 }
