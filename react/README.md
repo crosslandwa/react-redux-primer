@@ -87,7 +87,7 @@ React elements support attributes, such as `onClick`, that can be assigned [func
 
 ## Step 5 - State
 
-Previously our React components where simple functions that were passed props and rendered themselves. These are **super simple** to reason about, but limited in what they can do - they have no state!
+Previously our React components were simple functions that were passed props and rendered themselves. These are **super simple** to reason about, but limited in what they can do - they have no state!
 
 ### Task
 Turn `Clickable` into a simple counter that displays the number of times it has been clicked
